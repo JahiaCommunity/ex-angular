@@ -1,0 +1,8 @@
+<nav id="nav">
+  <ul>
+    <li class="active"><a href="/home">{{ home.name }}</a></li>
+    <li *ngFor="let page of pages">
+      <a href="{{ page.template.value }}" >{{ page.displayName }}</a>
+    </li>
+  </ul>
+</nav>

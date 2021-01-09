@@ -52,9 +52,16 @@
               "src/assets"
             ],
             "styles": [
+              "./templated-exmachina/css/skel-noscript.css",
+              "./templated-exmachina/css/style.css",
+              "./templated-exmachina/css/style-desktop.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./templated-exmachina/js/skel.min.js",
+              "./templated-exmachina/js/skel-panels.min.js",
+              "./templated-exmachina/js/init.js"
+            ]
           },
           "configurations": {
             "production": {

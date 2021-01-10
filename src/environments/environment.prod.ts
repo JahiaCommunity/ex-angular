@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  jahiaHost: "http://www.production.server"
 };

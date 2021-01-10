@@ -1,9 +1,14 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import { environment } from "../environments/environment";
+
+const API_ENDPOINT  = environment.jahiaHost+ '/modules/graphql';
 
 @Injectable()
 
 export class NavigationService {
+
+
 
   pages: any[] = [];
 
@@ -15,7 +20,6 @@ export class NavigationService {
 
   constructor(private httpClient: HttpClient) {
   }
-
 
   getPagesFromRESTApi(): any[] {
 
@@ -47,15 +51,8 @@ export class NavigationService {
                           query.replace(/(\r\n|\n|\r)/gm, "").replace(/(\\n)/gm, "").replace(/(")/gm, "\\\"")
                           +'","variables":null,"operationName":null}' ;
 
-
-    /*
-     * TODO : send this in config
-     */
-    const uri = 'http://localhost:8080/modules/graphql';
-
-
     this.httpClient
-      .post<any>(uri, graphQLQuery)
+      .post<any>(API_ENDPOINT , graphQLQuery)
       .subscribe(
         (response) => {
           const pagesInResponse = response.data.jcr.nodeByPath.children.nodes;

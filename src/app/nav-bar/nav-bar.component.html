@@ -1,8 +1,8 @@
 <nav id="nav">
   <ul>
-    <li routerLinkActive="active"><a routerLink="/home">{{ home.name }}</a></li>
+    <li routerLinkActive="active"><a routerLink="/home/{{ home.uuid }}">{{ home.name }}</a></li>
     <li routerLinkActive="active" *ngFor="let page of pages">
-      <a routerLink="{{ page.template.value }}" >{{ page.displayName }}</a>
+      <a routerLink="{{ page.template.value }}/{{ page.uuid }}" >{{ page.displayName }}</a>
     </li>
   </ul>
 </nav>

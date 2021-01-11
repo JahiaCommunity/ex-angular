@@ -14,12 +14,12 @@ import {RouterModule, Routes} from "@angular/router";
 
 
 const navRoutes: Routes = [
-  { path: 'home', component: HomepageTplComponent },
-  { path: 'left-side-bar', component: LeftSideBarTplComponent },
-  { path: 'right-side-bar', component: RightSideBarTplComponent },
-  { path: 'no-sidebar', component: NoSidebarTplComponent },
-  { path: '', component: HomepageTplComponent },
-  {path: "**", component: UnknownTplComponent}
+  { path: 'home/:uuid', component: HomepageTplComponent, runGuardsAndResolvers: 'always' },
+  { path: 'left-side-bar/:uuid', component: LeftSideBarTplComponent, runGuardsAndResolvers: 'always' },
+  { path: 'right-side-bar/:uuid', component: RightSideBarTplComponent, runGuardsAndResolvers: 'always' },
+  { path: 'no-sidebar/:uuid', component: NoSidebarTplComponent, runGuardsAndResolvers: 'always' },
+  { path: '', component: HomepageTplComponent, runGuardsAndResolvers: 'always' },
+  {path: "**", component: UnknownTplComponent, runGuardsAndResolvers: 'always'}
 ]
 
 
@@ -36,7 +36,7 @@ const navRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(navRoutes)
+    RouterModule.forRoot(navRoutes, {onSameUrlNavigation: 'reload'})
   ],
   providers: [
     NavigationService

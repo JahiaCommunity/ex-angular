@@ -12,6 +12,8 @@ import { RightSideBarTplComponent } from './pages-tpl/right-side-bar-tpl/right-s
 import { UnknownTplComponent } from './pages-tpl/unknown-tpl/unknown-tpl.component';
 import {RouterModule, Routes} from "@angular/router";
 import { ContentListComponent } from './content/content-list/content-list.component';
+import { RichTextComponent } from './content/rich-text/rich-text.component';
+
 
 
 const navRoutes: Routes = [
@@ -33,7 +35,8 @@ const navRoutes: Routes = [
     NoSidebarTplComponent,
     RightSideBarTplComponent,
     UnknownTplComponent,
-    ContentListComponent
+    ContentListComponent,
+    RichTextComponent
   ],
   imports: [
     BrowserModule,

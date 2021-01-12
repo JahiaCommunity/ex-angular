@@ -2,29 +2,23 @@
 <div id="debug" class="container">
   <div class="row">
     <div class="12u">
-      <h2>TODO : display homepage template for <strong>{{ pageId }}</strong></h2>
+      <p>TODO : display homepage template for <strong>{{ pageId }}</strong></p>
     </div>
   </div>
 </div>
 <div id="marketing" class="container">
   <div class="row">
     <div class="3u">
-      <section>
-        <app-content-list [contenListName]="'mkt1'" [parentId]="pageId"></app-content-list>
-      </section>
+      <app-content-list [contenListName]="'mkt1'" [parentId]="pageId"></app-content-list>
     </div>
     <div class="3u">
-      <section>
-        <app-content-list [contenListName]="'mkt2'" [parentId]="pageId"></app-content-list>
-      </section>
+      <app-content-list [contenListName]="'mkt2'" [parentId]="pageId"></app-content-list>
     </div>
     <div class="3u">
       <app-content-list [contenListName]="'mkt3'" [parentId]="pageId"></app-content-list>
     </div>
     <div class="3u">
-      <section>
-        <app-content-list [contenListName]="'mkt4'" [parentId]="pageId"></app-content-list>
-      </section>
+      <app-content-list [contenListName]="'mkt4'" [parentId]="pageId"></app-content-list>
     </div>
   </div>
 </div>

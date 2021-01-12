@@ -16,7 +16,6 @@ export class HomepageTplComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute, private router: Router) {
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
-      // If it is a NavigationEnd event re-initalise the component
       if (e instanceof NavigationEnd) {
         this.pageId = this.route.snapshot.params['uuid'];
       }

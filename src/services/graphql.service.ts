@@ -14,7 +14,7 @@ export class GraphqlService {
 
   getPagesFromRESTApi(pagePath: string): Observable<any>{
 
-    let query =
+    const query =
       '{\n' +
       '  jcr(workspace: LIVE) {\n' +
       '    nodeByPath(path: "/sites/'+environment.jahiaSiteName+pagePath+'") {\n' +
@@ -38,14 +38,49 @@ export class GraphqlService {
       '  }\n' +
       '}' ;
 
+      return this.executeQuery(query);
+
+  }
+
+  getContentInList(parentId: string, listName: string): Observable<any>{
+    const query = '{\n' +
+      '  jcr(workspace: LIVE) {\n' +
+      '    nodeById(uuid: "'+parentId+'"){\n' +
+      '      displayName,\n' +
+      '      path,\n' +
+      '      children(typesFilter: {types: "jnt:contentList"}, names: "'+listName+'"){\n' +
+      '        nodes  { \n' +
+      '          path,\n' +
+      '          name,\n' +
+      '          uuid,\n' +
+      '          children (typesFilter: {types:"jnt:content"}){\n' +
+      '            nodes {\n' +
+      '              path,\n' +
+      '              name,\n' +
+      '              uuid,\n' +
+      '              primaryNodeType{name}\n' +
+      '            }\n' +
+      '        }\n' +
+      '        }\n' +
+      '      }\n' +
+      '    }\n' +
+      '  }\n' +
+      '}';
+
+    return this.executeQuery(query);
+
+  }
+
+
+  private executeQuery(query: string): Observable<any>{
+
     const graphQLQuery = '{"query":"' +
-                          query.replace(/(\r\n|\n|\r)/gm, "").replace(/(\\n)/gm, "").replace(/(")/gm, "\\\"")
-                          +'","variables":null,"operationName":null}' ;
+      query.replace(/(\r\n|\n|\r)/gm, "").replace(/(\\n)/gm, "").replace(/(")/gm, "\\\"")
+      +'","variables":null,"operationName":null}' ;
 
     return this.httpClient.post<any>(API_ENDPOINT , graphQLQuery);
 
   }
-
 
 
 }

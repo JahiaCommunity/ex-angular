@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  debugContent: true,
   jahiaHost: "http://localhost:8080",
   jahiaSiteName: "ex-angular"
 };

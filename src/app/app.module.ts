@@ -11,6 +11,7 @@ import { NoSidebarTplComponent } from './pages-tpl/no-sidebar-tpl/no-sidebar-tpl
 import { RightSideBarTplComponent } from './pages-tpl/right-side-bar-tpl/right-side-bar-tpl.component';
 import { UnknownTplComponent } from './pages-tpl/unknown-tpl/unknown-tpl.component';
 import {RouterModule, Routes} from "@angular/router";
+import { ContentListComponent } from './content/content-list/content-list.component';
 
 
 const navRoutes: Routes = [
@@ -31,7 +32,8 @@ const navRoutes: Routes = [
     LeftSideBarTplComponent,
     NoSidebarTplComponent,
     RightSideBarTplComponent,
-    UnknownTplComponent
+    UnknownTplComponent,
+    ContentListComponent
   ],
   imports: [
     BrowserModule,

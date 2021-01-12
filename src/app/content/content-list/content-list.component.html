@@ -1,5 +1,5 @@
 <ng-container *ngFor="let content of contents" [ngSwitch]="content.primaryNodeType.name">
-  <app-rich-text *ngSwitchCase="'jnt:bigText'" [contentId]="content.uuid"></app-rich-text>
+  <app-rich-text *ngSwitchCase="'jnt:bigText'" [contentId]="content.uuid" [contentPath]="content.path"></app-rich-text>
   <p style="background-color: darkorange" *ngSwitchDefault> {{ content.path }} of type {{ content.primaryNodeType.name }} not implemented </p>
 </ng-container>
 

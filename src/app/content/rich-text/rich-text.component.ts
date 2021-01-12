@@ -14,6 +14,7 @@ export class RichTextComponent implements OnInit {
   bigText: any;
 
   @Input('contentId') contentId!: string;
+  @Input('contentPath') contentPath!: string;
 
   constructor(private graphqlService: GraphqlService) { }
 
@@ -28,14 +29,14 @@ export class RichTextComponent implements OnInit {
   }
 
   getText(){
+    if (this.bigText != null){
+      let toReturn: string = this.bigText.text.value;
+      toReturn = toReturn.replace(/\/files\/\{workspace\}/gm, environment.jahiaHost + "/files/live")
+      return toReturn;
+    } else {
+      return "----";
+    }
 
-
-
-    let toReturn: string = this.bigText.text.value;
-
-    toReturn = toReturn.replace(/\/files\/\{workspace\}/gm, environment.jahiaHost + "/files/live")
-
-    return toReturn;
   }
 
 }

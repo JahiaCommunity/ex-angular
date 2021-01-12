@@ -16,11 +16,11 @@ export class AppComponent {
     graphqlService.getHomePage('/home').subscribe(
       (response) => {
         this.homePageId = response.data.jcr.nodeByPath.uuid;
+        console.log("DEBUG AppComponent " + this.homePageId);
       }, (error) => {
         console.log('Error ' + error);
       }
     );
-
   }
 
 }

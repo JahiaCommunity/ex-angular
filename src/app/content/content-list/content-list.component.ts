@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {GraphqlService} from "../../../services/graphql.service";
 
 @Component({
@@ -6,7 +6,7 @@ import {GraphqlService} from "../../../services/graphql.service";
   templateUrl: './content-list.component.html',
   styleUrls: ['./content-list.component.css']
 })
-export class ContentListComponent implements OnInit {
+export class ContentListComponent implements OnInit, OnChanges {
 
   contents: any[] = [];
 
@@ -16,13 +16,18 @@ export class ContentListComponent implements OnInit {
   constructor(private graphqlService: GraphqlService) { }
 
   ngOnInit(): void {
+
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
     this.graphqlService.getContentInList(this.parentId, this.contenListName).subscribe(response =>{
         this.contents = response.data.jcr.nodeById.children.nodes[0].children.nodes;
-        console.log("DEBUG " + this.contents.length);
       }, error => {
         console.log("Error : " + error);
       }
     );
-
   }
+
+
+
 }

@@ -20,12 +20,14 @@ export class ContentListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.graphqlService.getContentInList(this.parentId, this.contenListName).subscribe(response =>{
-        this.contents = response.data.jcr.nodeById.children.nodes[0].children.nodes;
-      }, error => {
-        console.log("Error : " + error);
-      }
-    );
+    if (this.parentId != '') {
+      this.graphqlService.getContentInList(this.parentId, this.contenListName).subscribe(response => {
+          this.contents = response.data.jcr.nodeById.children.nodes[0].children.nodes;
+        }, error => {
+          console.log("Error : " + error);
+        }
+      );
+    }
   }
 
 

@@ -42,7 +42,7 @@ export class GraphqlService {
 
   }
 
-  getHomePage(pagePath: string): Observable<any>{
+  getPage(pagePath: string): Observable<any>{
 
     const query =
       '{\n' +
@@ -58,6 +58,29 @@ export class GraphqlService {
     return this.executeQuery(query);
 
   }
+
+  getBanner(): Observable<any>{
+
+    const query =
+      '{\n' +
+      '  jcr(workspace: LIVE) {\n' +
+      '    nodeByPath(path: "/sites/'+environment.jahiaSiteName+environment.bannerPath+'") {\n' +
+      '      displayName,\n' +
+      '      path,\n' +
+      '      uuid,\n' +
+      '      image: property(name: "image"){\n' +
+      '        refNode{\n' +
+      '          path\n' +
+      '        }\n' +
+      '      }\n' +
+      '    }\n' +
+      '  }\n' +
+      '}' ;
+
+    return this.executeQuery(query);
+
+  }
+
 
   getContentInList(parentId: string, listName: string): Observable<any>{
     const query = '{\n' +

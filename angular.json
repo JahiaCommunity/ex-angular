@@ -55,12 +55,12 @@
               "./templated-exmachina/css/skel-noscript.css",
               "./templated-exmachina/css/style.css",
               "./templated-exmachina/css/style-desktop.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],
             "scripts": [
-              "./templated-exmachina/js/skel.min.js",
-              "./templated-exmachina/js/skel-panels.min.js",
-              "./templated-exmachina/js/init.js"
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js"
             ]
           },
           "configurations": {

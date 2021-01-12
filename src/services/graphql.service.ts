@@ -42,6 +42,23 @@ export class GraphqlService {
 
   }
 
+  getHomePage(pagePath: string): Observable<any>{
+
+    const query =
+      '{\n' +
+      '  jcr(workspace: LIVE) {\n' +
+      '    nodeByPath(path: "/sites/'+environment.jahiaSiteName+pagePath+'") {\n' +
+      '      displayName(language: "en"),\n' +
+      '      path,\n' +
+      '      uuid,\n' +
+      '    }\n' +
+      '  }\n' +
+      '}' ;
+
+    return this.executeQuery(query);
+
+  }
+
   getContentInList(parentId: string, listName: string): Observable<any>{
     const query = '{\n' +
       '  jcr(workspace: LIVE) {\n' +

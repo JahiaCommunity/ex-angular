@@ -28,9 +28,10 @@ export class RichTextComponent implements OnInit {
   }
 
   getText(){
-    let toReturn: string = this.bigText.text.value;
 
-    console.log("DEBUG " + toReturn);
+
+
+    let toReturn: string = this.bigText.text.value;
 
     toReturn = toReturn.replace(/\/files\/\{workspace\}/gm, environment.jahiaHost + "/files/live")
 

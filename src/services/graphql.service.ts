@@ -1,6 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import { environment } from "../environments/environment";
+import {Observable} from "rxjs";
 
 const API_ENDPOINT  = environment.jahiaHost+ '/modules/graphql';
 
@@ -8,18 +9,10 @@ const API_ENDPOINT  = environment.jahiaHost+ '/modules/graphql';
 
 export class GraphqlService {
 
-  pages: any[] = [];
-
-  home =  {
-    name: 'NAV',
-    path: '/',
-    uuid: ''
-  };
-
   constructor(private httpClient: HttpClient) {
   }
 
-  getPagesFromRESTApi(pagePath: string): any[] {
+  getPagesFromRESTApi(pagePath: string): Observable<any>{
 
     let query =
       '{\n' +
@@ -49,25 +42,8 @@ export class GraphqlService {
                           query.replace(/(\r\n|\n|\r)/gm, "").replace(/(\\n)/gm, "").replace(/(")/gm, "\\\"")
                           +'","variables":null,"operationName":null}' ;
 
-    this.httpClient
-      .post<any>(API_ENDPOINT , graphQLQuery)
-      .subscribe(
-        (response) => {
-          const pagesInResponse = response.data.jcr.nodeByPath.children.nodes;
-          for (let i = 0; i < pagesInResponse.length; i++) {
-            const page = pagesInResponse[i];
-            this.pages.push(page);
-          }
-          this.home.name = response.data.jcr.nodeByPath.displayName;
-          this.home.path = response.data.jcr.nodeByPath.path;
-          this.home.uuid = response.data.jcr.nodeByPath.uuid;
+    return this.httpClient.post<any>(API_ENDPOINT , graphQLQuery);
 
-        }, (error) => {
-          console.log('Error ' + error);
-        }
-      );
-
-      return this.pages;
   }
 
 

@@ -16,13 +16,24 @@ export class NavBarComponent implements OnInit {
     uuid: ''
   };
 
-  constructor(private navigationService: GraphqlService) {
-    navigationService.getPagesFromRESTApi('/home');
+  constructor(private graphqlService: GraphqlService) {
+    graphqlService.getPagesFromRESTApi('/home').subscribe(
+        (response) => {
+          const pagesInResponse = response.data.jcr.nodeByPath.children.nodes;
+          for (let i = 0; i < pagesInResponse.length; i++) {
+            const page = pagesInResponse[i];
+            this.pages.push(page);
+          }
+          this.home.name = response.data.jcr.nodeByPath.displayName;
+          this.home.path = response.data.jcr.nodeByPath.path;
+          this.home.uuid = response.data.jcr.nodeByPath.uuid;
+        }, (error) => {
+          console.log('Error ' + error);
+        }
+      );
   }
 
   ngOnInit(): void {
-    this.pages = this.navigationService.pages;
-    this.home = this.navigationService.home;
   }
 
 

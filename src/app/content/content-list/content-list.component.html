@@ -1,10 +1,5 @@
-<section>
-  <header>
-    <p>Todo : display content list {{ contenListName }} from parent  {{ parentId }}...</p>
-  </header>
-</section>
 <ng-container *ngFor="let content of contents" [ngSwitch]="content.primaryNodeType.name">
-  <app-rich-text *ngSwitchCase="'jnt:bigText'"></app-rich-text>
+  <app-rich-text *ngSwitchCase="'jnt:bigText'" [contentId]="content.uuid"></app-rich-text>
   <p *ngSwitchDefault> {{ content.path }} of type {{ content.primaryNodeType.name }} not implemented </p>
 </ng-container>
 

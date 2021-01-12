@@ -72,6 +72,24 @@ export class GraphqlService {
   }
 
 
+  getBigText(contentId: string){
+    const query =
+      '{\n' +
+      '  jcr(workspace: LIVE) {\n' +
+      '    nodeById(uuid: "'+contentId+'"){\n' +
+      '      displayName,\n' +
+      '      path,\n' +
+      '      text: property(name: "text", language: "en"){\n' +
+      '         value\n' +
+      '      }\n' +
+      '    }\n' +
+      '  }\n' +
+      '}' ;
+
+    return this.executeQuery(query);
+  }
+
+
   private executeQuery(query: string): Observable<any>{
 
     const graphQLQuery = '{"query":"' +

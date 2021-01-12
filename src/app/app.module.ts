@@ -4,7 +4,7 @@ import {HttpClientModule} from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import {NavigationService} from "../services/navigation.service";
+import {GraphqlService} from "../services/graphql.service";
 import { HomepageTplComponent } from './pages-tpl/homepage-tpl/homepage-tpl.component';
 import { LeftSideBarTplComponent } from './pages-tpl/left-side-bar-tpl/left-side-bar-tpl.component';
 import { NoSidebarTplComponent } from './pages-tpl/no-sidebar-tpl/no-sidebar-tpl.component';
@@ -39,7 +39,7 @@ const navRoutes: Routes = [
     RouterModule.forRoot(navRoutes, {onSameUrlNavigation: 'reload'})
   ],
   providers: [
-    NavigationService
+    GraphqlService
   ],
   bootstrap: [AppComponent]
 })

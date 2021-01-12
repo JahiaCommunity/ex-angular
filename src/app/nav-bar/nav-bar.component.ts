@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NavigationService} from "../../services/navigation.service";
+import {GraphqlService} from "../../services/graphql.service";
 
 @Component({
   selector: 'app-nav-bar',
@@ -16,8 +16,8 @@ export class NavBarComponent implements OnInit {
     uuid: ''
   };
 
-  constructor(private navigationService: NavigationService) {
-    navigationService.getPagesFromRESTApi();
+  constructor(private navigationService: GraphqlService) {
+    navigationService.getPagesFromRESTApi('/home');
   }
 
   ngOnInit(): void {

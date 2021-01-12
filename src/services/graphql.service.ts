@@ -6,9 +6,7 @@ const API_ENDPOINT  = environment.jahiaHost+ '/modules/graphql';
 
 @Injectable()
 
-export class NavigationService {
-
-
+export class GraphqlService {
 
   pages: any[] = [];
 
@@ -21,12 +19,12 @@ export class NavigationService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getPagesFromRESTApi(): any[] {
+  getPagesFromRESTApi(pagePath: string): any[] {
 
     let query =
       '{\n' +
       '  jcr(workspace: LIVE) {\n' +
-      '    nodeByPath(path: "/sites/ex-angular/home") {\n' +
+      '    nodeByPath(path: "/sites/'+environment.jahiaSiteName+pagePath+'") {\n' +
       '      displayName(language: "en"),\n' +
       '      path,\n' +
       '      uuid,\n' +

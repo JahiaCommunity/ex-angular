@@ -1,8 +1,6 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
   <div class="container">
 
-    <a class="navbar-brand" routerLink="/home/{{ home.uuid }}">{{ home.name }}</a>
-
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
@@ -11,6 +9,9 @@
     <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav">
+        <li routerLinkActive="active" class='nav-item'>
+          <a class="nav-link" routerLink="/home/{{ home.uuid }}">{{ home.name }}</a>
+        </li>
         <li routerLinkActive="active" *ngFor="let page of pages" class='nav-item'>
           <a class="nav-link" routerLink="/{{ page.template.value }}/{{ page.uuid }}">{{ page.displayName }}</a>
         </li>

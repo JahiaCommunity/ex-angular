@@ -52,9 +52,6 @@
               "src/assets"
             ],
             "styles": [
-              "./templated-exmachina/css/skel-noscript.css",
-              "./templated-exmachina/css/style.css",
-              "./templated-exmachina/css/style-desktop.css",
               "./node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],

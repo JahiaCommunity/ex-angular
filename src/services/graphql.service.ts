@@ -136,7 +136,7 @@ export class GraphqlService {
       query.replace(/(\r\n|\n|\r)/gm, "").replace(/(\\n)/gm, "").replace(/(")/gm, "\\\"")
       +'","variables":null,"operationName":null}' ;
 
-    return this.httpClient.post<any>(API_ENDPOINT , graphQLQuery);
+    return this.httpClient.post<any>(API_ENDPOINT , graphQLQuery, );
 
   }
 
